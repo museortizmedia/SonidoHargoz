@@ -1,4 +1,5 @@
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
+import { Play, Pause } from "lucide-react";
 import Button from "./Button";
 
 export default function ActorCard({
@@ -8,16 +9,39 @@ export default function ActorCard({
     audio,
 }) {
     const audioRef = useRef(null);
+    const [isPlaying, setIsPlaying] = useState(false);
 
-    const playAudio = () => {
-        audioRef.current?.play();
+    const toggleAudio = () => {
+        const audioEl = audioRef.current;
+        if (!audioEl) return;
+
+        if (isPlaying) {
+            audioEl.pause();
+        } else {
+            audioEl.play();
+        }
+
+        setIsPlaying(!isPlaying);
     };
+
+    // Cuando termina el audio, actualizar estado
+    useEffect(() => {
+        const audioEl = audioRef.current;
+        if (!audioEl) return;
+
+        const handleEnded = () => setIsPlaying(false);
+        audioEl.addEventListener("ended", handleEnded);
+
+        return () => {
+            audioEl.removeEventListener("ended", handleEnded);
+        };
+    }, []);
 
     return (
         <div className="relative group w-64 h-96">
 
             {/* CONTENEDOR FLIP */}
-            <div className="relative w-full h-full [transform-style:preserve-3d] transition-transform duration-500 group-hover:[transform:rotateY(180deg)]">
+            <div className="relative w-full h-full transform-3d transition-transform duration-500 group-hover:transform-[rotateY(180deg)]">
 
                 {/* FRONT */}
                 <div className="absolute w-full h-full backface-hidden rounded-xl overflow-hidden border border-gold/30">
@@ -35,29 +59,36 @@ export default function ActorCard({
                 </div>
 
                 {/* BACK */}
-                <div className="absolute w-full h-full backface-hidden rotate-y-180 bg-neutral-900 p-6 rounded-xl border border-gold/30 flex flex-col justify-between">
+                <div className="absolute w-full h-full backface-hidden rotate-y-180 bg-neutral-900 p-6 rounded-xl border border-gold/30 flex flex-col">
 
-                    <div>
-                        <h3 className="text-gold text-xl mb-3">
+                    {/* Nombre + Play/Pause */}
+                    <div className="flex items-center justify-between mb-3">
+                        <h3 className="text-gold text-xl">
                             {name}
                         </h3>
 
-                        <p className="text-sm text-gray-300">
-                            {description}
-                        </p>
+                        <button
+                            onClick={toggleAudio}
+                            className="p-2 bg-blue-600 rounded-full hover:scale-105 transition"
+                        >
+                            {isPlaying ? (
+                                <Pause size={18} />
+                            ) : (
+                                <Play size={18} />
+                            )}
+                        </button>
+                    </div>
+
+                    {/* Scroll interno */}
+                    <div className="flex-1 overflow-y-auto pr-2 text-sm text-gray-300">
+                        {description}
                     </div>
 
                 </div>
             </div>
 
-            {/* BOTÓN LATERAL */}
-            <div className="absolute right-[-60px] top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition duration-300">
-                <Button variant="blue" onClick={playAudio}>
-                    ▶
-                </Button>
-            </div>
-
             <audio ref={audioRef} src={audio} />
+
         </div>
     );
 }

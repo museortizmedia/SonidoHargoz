@@ -1,33 +1,30 @@
 import Button from "../components/Button";
-import bannerImg from "../assets/banner.jpg";
+import bannerImg from "../assets/banner_o.png";
 
 export default function Banner({ className = "" }) {
     return (
         <section
-            className={`relative h-[35vh] min-h-[1vh] overflow-hidden ${className}`}
+            className={`relative h-[47vh] min-h-[1vh] overflow-hidden ${className}`}
         >
             {/* Imagen fondo */}
             <img
                 src={bannerImg}
                 alt="Banner"
-                className="absolute inset-0 w-full h-full object-cover object-center grayscale"
+                className="absolute inset-0 w-full h-full object-cover object-center filter grayscale"
                 loading="lazy"
             />
 
             {/* Overlay */}
             <div className="absolute inset-0 bg-black/50"></div>
 
-            {/* Contenido */}
-            <div className="relative z-10 h-full flex">
+            <div className="relative z-10 h-full flex items-end justify-end px-8 lg:px-20 pb-16">
+                <div className="max-w-xl text-right">
 
-                {/* COLUMNA IZQUIERDA */}
-                <div className="w-3/4 flex flex-col justify-end px-8 lg:px-20 pb-16 text-right">
-
-                    <h1 className="font-baskerville text-4xl md:text-5xl mb-4 text-[#C6A75E]">
+                    <h1 className="font-baskerville text-3xl md:text-5xl mb-4 text-[#C6A75E]">
                         La voz en la oscuridad
                     </h1>
 
-                    <p className="text-lg max-w-md mb-6 text-[rgba(198,167,94,0.8)]">
+                    <p className="text-lg mb-6 text-[rgba(198,167,94,0.8)]">
                         Donde el talento se convierte en presencia sonora.
                     </p>
 

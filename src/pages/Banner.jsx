@@ -28,9 +28,11 @@ export default function Banner({ className = "" }) {
                         Donde el talento se convierte en presencia sonora.
                     </p>
 
-                    <Button variant="blue">
-                        Escuchar demos
-                    </Button>
+                    <a href="#academia">
+                        <Button variant="blue" className="uppercase">
+                            Inscribirse
+                        </Button>
+                    </a>
 
                 </div>
 

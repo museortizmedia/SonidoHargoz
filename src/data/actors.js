@@ -1,8 +1,8 @@
-import actor1 from "../assets/actores/actor1.jpg";
-import actor2 from "../assets/actores/actor2.jpg";
-import actor3 from "../assets/actores/actor3.jpg";
-import actor4 from "../assets/actores/actor4.jpg";
-import actor5 from "../assets/actores/actor5.jpg";
+import actor1 from "../assets/actores/actor1.png";
+import actor2 from "../assets/actores/actor2.png";
+import actor3 from "../assets/actores/actor3.png";
+import actor4 from "../assets/actores/actor4.png";
+import actor5 from "../assets/actores/actor5.png";
 
 import demo1 from "../assets/demos/demo1.mp3";
 import demo2 from "../assets/demos/demo2.mp3";
@@ -10,41 +10,242 @@ import demo3 from "../assets/demos/demo3.mp3";
 import demo4 from "../assets/demos/demo4.mp3";
 import demo5 from "../assets/demos/demo5.mp3";
 
+const defaultBadges = [
+    { label: "Comercial", icon: "mic" },
+    { label: "Doblaje", icon: "film" },
+    { label: "Narración", icon: "book" }
+];
+
 export const actors = [
     {
         id: 1,
+        slug: "luka",
         name: "Luisana 'Luka' Otero",
-        description: "Especialista en narración profunda y dramática.",
-        image: actor1,
-        audio: demo1,
+        featured: true,
+
+        profile: {
+            shortBio: "Especialista en narración profunda y dramática.",
+            fullBio: `
+Especialista en narración profunda y dramática con experiencia en interpretación vocal para piezas audiovisuales, institucionales y comerciales.
+      `,
+            skills: [
+                "Narración dramática",
+                "Locución comercial",
+                "Voz institucional"
+            ],
+            awards: [],
+            languages: ["Español"],
+            badges: defaultBadges,
+            characters: [
+                {
+                    name: "Comandante Arthus",
+                    project: "Serie Sci-Fi: Eclipse",
+                    image: "/characters/arthus.jpg",
+                    demo: "/audios/arthus.mp3"
+                }
+            ]
+        },
+
+        media: {
+            image: actor1,
+            demo: demo1,
+            gallery: []
+        },
+
+        contact: {
+            email: "",
+            phone: "",
+            website: ""
+        },
+
+        social: {
+            instagram: "",
+            youtube: "",
+            linkedin: ""
+        },
+
+        stats: {
+            projects: 0,
+            yearsExperience: 0
+        }
     },
+
     {
         id: 2,
+        slug: "santiago-zambrano",
         name: "Santiago Zambrano",
-        description: "Soy Santiago Zambrano Rivera, un joven de 23 años de edad, Comunicador Social y Periodista con especialización en Comunicación y Periodismo Digital, egresado de la Universidad Autónoma de Occidente y actualmente estudiante del programa de Educación para el Trabajo y Desarrollo Humano (ETDH) en Música en la Institución Universitaria IUIPC de la ciudad de Cali./nCuento con experiencia en componentes audiovisuales y radiofónicos en producción y creación de contenidos de video y sonido para radio, televisión y ecosistemas digitales./nHe sido ganador del primer lugar en los premios 'Radio del Nuevo Siglo 2023' de la Universidad de La República, en Montevideo Uruguay en la categoría 'Pódcast de ficción' con el programa sonoro interactivo 'La Profesía', un trabajo realizado en conjunto con los estudiantes de la materia Podcasting Interactivo de la UAO y ganador de premios musicales universitarios como: 1er lugar - Categoría Solista Masculino en el XXVIII Festival Interno de La Canción 2024, 1er lugar en la categoría Solista Masculino en el Festival Regional de La Canción - ASCUN Occidente 2024 y 1er lugar en la categoría Grupo Fusión con Sonata Jazz de la UAO en el Festival Regional de Orquestas, Bandas y Grupos Fusión - ASCUN Occidente 2024./nSoy un gran apasionado a la radio, y mi paso por Ondauao en la realización radiofónica en E-Spodcast, ha hecho en mi, un profesional con un amplio recorrido en locución y manejo del Español Neutro Colombiano.",
-        desc: "Especialista en narración profunda y dramática.",
-        image: actor2,
-        audio: demo2,
+        featured: true,
+
+        profile: {
+            shortBio: "Comunicador social, periodista y locutor profesional.",
+            fullBio: `
+Soy Santiago Zambrano Rivera, Comunicador Social y Periodista con especialización en Comunicación y Periodismo Digital.
+
+Ganador del primer lugar en "Radio del Nuevo Siglo 2023" en Montevideo Uruguay en la categoría "Pódcast de ficción".
+
+Experiencia en producción audiovisual, radio, televisión y ecosistemas digitales.
+      `,
+            skills: [
+                "Locución profesional",
+                "Producción audiovisual",
+                "Podcasting interactivo",
+                "Español neutro colombiano"
+            ],
+            awards: [
+                "Radio del Nuevo Siglo 2023 - 1er lugar",
+                "Festival Interno de La Canción 2024 - 1er lugar",
+                "ASCUN Occidente 2024 - 1er lugar"
+            ],
+            languages: ["Español"],
+            badges: defaultBadges,
+            characters: [
+                {
+                    name: "Comandante Arthus",
+                    project: "Serie Sci-Fi: Eclipse",
+                    image: "/characters/arthus.jpg",
+                    demo: "/audios/arthus.mp3"
+                }
+            ]
+        },
+
+        media: {
+            image: actor2,
+            demo: demo2,
+            gallery: []
+        },
+
+        contact: {
+            email: "",
+            phone: "",
+            website: ""
+        },
+
+        social: {
+            instagram: "",
+            youtube: "",
+            linkedin: ""
+        },
+
+        stats: {
+            projects: 12,
+            yearsExperience: 4
+        }
     },
+
     {
         id: 3,
+        slug: "antonio-tony-arzuza",
         name: "Antonio 'Tony' Arzuza",
-        description: "Especialista en narración profunda y dramática.",
-        image: actor3,
-        audio: demo3,
+        featured: false,
+
+        profile: {
+            shortBio: "Especialista en narración profunda y dramática.",
+            fullBio: `
+Especialista en narración profunda y dramática con capacidad interpretativa para proyectos audiovisuales y comerciales.
+      `,
+            skills: ["Narración dramática"],
+            awards: [],
+            languages: ["Español"],
+            badges: defaultBadges,
+            characters: [
+                {
+                    name: "Comandante Arthus",
+                    project: "Serie Sci-Fi: Eclipse",
+                    image: "/characters/arthus.jpg",
+                    demo: "/audios/arthus.mp3"
+                }
+            ]
+        },
+
+        media: {
+            image: actor3,
+            demo: demo3,
+            gallery: []
+        },
+
+        contact: {},
+        social: {},
+        stats: {
+            projects: 0,
+            yearsExperience: 0
+        }
     },
+
     {
         id: 4,
+        slug: "valentina-toro",
         name: "Valentina Toro",
-        description: "Especialista en narración profunda y dramática.",
-        image: actor4,
-        audio: demo4,
+        featured: false,
+
+        profile: {
+            shortBio: "Especialista en narración profunda y dramática.",
+            fullBio: `
+Especialista en narración profunda y dramática con experiencia en interpretación vocal para diversos formatos multimedia.
+      `,
+            skills: ["Narración dramática"],
+            awards: [],
+            languages: ["Español"],
+            badges: defaultBadges,
+            characters: [
+                {
+                    name: "Comandante Arthus",
+                    project: "Serie Sci-Fi: Eclipse",
+                    image: "/characters/arthus.jpg",
+                    demo: "/audios/arthus.mp3"
+                }
+            ]
+        },
+
+        media: {
+            image: actor4,
+            demo: demo4,
+            gallery: []
+        },
+
+        contact: {},
+        social: {},
+        stats: {
+            projects: 0,
+            yearsExperience: 0
+        }
     },
+
     {
         id: 5,
+        slug: "nicolas-barrera",
         name: "Nicolás Barrera",
-        description: "Especialista en narración profunda y dramática.",
-        image: actor5,
-        audio: demo5,
-    },
+        featured: false,
+
+        profile: {
+            shortBio: "Especialista en narración profunda y dramática.",
+            fullBio: `
+Especialista en narración profunda y dramática enfocado en proyectos audiovisuales y narrativas sonoras.
+      `,
+            skills: ["Narración dramática"],
+            awards: [],
+            languages: ["Español"],
+            badges: defaultBadges,
+            characters: [
+                {
+                    name: "Comandante Arthus",
+                    project: "Serie Sci-Fi: Eclipse",
+                    image: "/characters/arthus.jpg",
+                    demo: "/audios/arthus.mp3"
+                }
+            ]
+        },
+
+        media: {
+            image: actor5,
+            demo: demo5,
+            gallery: []
+        },
+
+        contact: {},
+        social: {},
+        stats: {
+            projects: 0,
+            yearsExperience: 0
+        }
+    }
 ];

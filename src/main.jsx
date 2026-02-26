@@ -35,8 +35,27 @@ function Router() {
     }
 
     return (
-      <div className="min-h-screen bg-black flex items-center justify-center text-white text-2xl">
-        Actor no encontrado
+      <div className="min-h-screen flex items-center justify-center bg-black px-6">
+        <div className="text-center max-w-lg space-y-6">
+
+          <h1 className="text-4xl font-bold text-[#C6A75E]">
+            404. Perfil no encontrado
+          </h1>
+
+          <p className="text-gray-400 text-lg leading-relaxed">
+            El perfil que intentas acceder no existe o fue eliminado.
+            Esta plataforma presenta actores, su trayectoria y muestras
+            de voz dentro de un catálogo profesional.
+          </p>
+
+          <a
+            href="/"
+            className="inline-block px-6 py-3 border border-[#C6A75E] text-[#C6A75E] uppercase tracking-wide text-sm rounded-sm transition hover:bg-[#C6A75E] hover:text-black"
+          >
+            Volver al inicio
+          </a>
+
+        </div>
       </div>
     );
   }

@@ -55,7 +55,7 @@ Especialista en narración profunda y dramática con experiencia en interpretaci
         contact: {
             email: "",
             phone: "",
-            website: ""
+            website: "https://sonido-hargoz.vercel.app/profile/luka"
         },
 
         social: {

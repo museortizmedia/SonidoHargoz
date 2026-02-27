@@ -11,10 +11,30 @@ export default function ActorCard({
     const canvasRef = useRef(null);
 
     const [isPlaying, setIsPlaying] = useState(false);
+    const [isFlipped, setIsFlipped] = useState(false);
+    const [isTouchDevice, setIsTouchDevice] = useState(false);
 
     const audioContextRef = useRef(null);
     const analyserRef = useRef(null);
     const animationRef = useRef(null);
+
+    /* ==============================
+       DETECT TOUCH DEVICE
+    ============================== */
+
+    useEffect(() => {
+        const hasTouch =
+            "ontouchstart" in window ||
+            navigator.maxTouchPoints > 0;
+
+        setIsTouchDevice(hasTouch);
+    }, []);
+
+    const handleFlip = () => {
+        if (isTouchDevice) {
+            setIsFlipped(prev => !prev);
+        }
+    };
 
     /* ==============================
        AUDIO VISUALIZER
@@ -94,7 +114,9 @@ export default function ActorCard({
        TOGGLE AUDIO
     ============================== */
 
-    const toggleAudio = async () => {
+    const toggleAudio = async (e) => {
+        e.stopPropagation(); // evita que el tap voltee la card
+
         const audioEl = audioRef.current;
         if (!audioEl) return;
 
@@ -130,8 +152,10 @@ export default function ActorCard({
     ============================== */
 
     return (
-        <div className="relative group w-64 h-96">
-
+        <div
+            className="relative group w-64 h-96 cursor-pointer"
+            onClick={handleFlip}
+        >
             {/* Glow Canvas */}
             <canvas
                 ref={canvasRef}
@@ -140,12 +164,18 @@ export default function ActorCard({
                 className="absolute inset-0 rounded-xl blur-2xl opacity-70 pointer-events-none"
             />
 
-            <div className="relative w-full h-full transform-3d transition-transform duration-500 group-hover:rotate-y-180">
+            <div
+                className={`relative w-full h-full transform-3d transition-transform duration-500
+                ${isTouchDevice
+                        ? isFlipped && "rotate-y-180"
+                        : "group-hover:rotate-y-180"
+                    }`}
+            >
 
                 {/* FRONT */}
                 <div
-                    className={`absolute w-full h-full backface-hidden rounded-xl overflow-hidden border border-[#C6A75E]/30 ${isPlaying ? "grayscale-0" : "grayscale"
-                        }`}
+                    className={`absolute w-full h-full backface-hidden rounded-xl overflow-hidden border border-[#C6A75E]/30
+                    ${isPlaying ? "grayscale-0" : "grayscale"}`}
                 >
                     <img
                         src={media.image}
@@ -170,9 +200,10 @@ export default function ActorCard({
 
                         <button
                             onClick={toggleAudio}
-                            className={`p-3 rounded-full transition-all duration-300 ${isPlaying
-                                ? "bg-gradient-to-r from-[#C6A75E] to-yellow-500 shadow-[0_0_20px_rgba(255,215,0,0.4)]"
-                                : "bg-blue-600 hover:bg-blue-500"
+                            className={`p-3 rounded-full transition-all duration-300
+                            ${isPlaying
+                                    ? "bg-gradient-to-r from-[#C6A75E] to-yellow-500 shadow-[0_0_20px_rgba(255,215,0,0.4)]"
+                                    : "bg-blue-600 hover:bg-blue-500"
                                 }`}
                         >
                             {isPlaying ? <Pause size={18} /> : <Play size={18} />}
@@ -183,17 +214,15 @@ export default function ActorCard({
                         {profile.fullBio}
                     </div>
 
-                    {/* ACTIONS */}
                     <div className="mt-4 flex gap-3">
-
                         <a
                             href={`/profile/${slug.toLowerCase().replace(/\s+/g, "-")}`}
+                            onClick={(e) => e.stopPropagation()}
                             className="flex items-center gap-2 text-xs uppercase tracking-wide px-4 py-2 border border-[#C6A75E]/40 text-[#C6A75E] hover:bg-[#C6A75E] hover:text-black transition rounded"
                         >
                             <User size={14} />
                             Ver perfil
                         </a>
-
                     </div>
 
                 </div>

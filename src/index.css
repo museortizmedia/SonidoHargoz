@@ -2,7 +2,18 @@
 
 body {
     font-family: "Inter", sans-serif;
+    /*cursor: none !important;*/
 }
+
+/*a,
+button,
+input,
+textarea,
+select,
+[role="button"],
+* {
+    cursor: none !important;
+}*/
 
 .font-baskerville {
     font-family: "Libre Baskerville", serif;

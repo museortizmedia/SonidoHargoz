@@ -8,12 +8,14 @@ import {
     Globe,
     Sparkles,
     Film,
-    BookOpen
+    BookOpen,
+    ArrowLeft
 } from "lucide-react";
 
 import AudioPlayer from "../components/AudioPlayer";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Button from "../components/Button";
+import ShimmerName from "../components/ShimmerName";
 
 export default function ProfilePage({ actor }) {
 
@@ -56,6 +58,15 @@ export default function ProfilePage({ actor }) {
 
             {/* HERO */}
             <div className="relative h-[95vh] flex items-center justify-center overflow-hidden">
+
+                <div className="absolute top-6 left-6 z-20">
+                    <a
+                        href="/#catalogo"
+                        className="flex items-center gap-2 px-4 py-2 bg-black/50 backdrop-blur-md border border-white/10 text-white/80 hover:text-[#C6A75E] transition rounded-full text-sm"
+                    >
+                        <ArrowLeft size={14} title="Regresar al catálogo" />
+                    </a>
+                </div>
 
                 <img
                     src={actor.media.image}
@@ -100,15 +111,15 @@ export default function ProfilePage({ actor }) {
                     </div>
 
                     {/* NOMBRE */}
-                    <h1 className="text-5xl md:text-6xl font-bold mt-6 mb-4 tracking-wider 
-            bg-gradient-to-r 
-            from-[#D4AF37] 
-            via-[#C6A75E] 
-            to-[#D4AF37] 
-            bg-clip-text text-transparent 
-            drop-shadow-[0_0_18px_rgba(255,215,0,0.25)]">
+                    <ShimmerName
+                        mode="classic"
+                        baseColor="#C6A75E"
+                        animated={true}
+                        radius={800}
+                        className="text-6xl font-bold tracking-wide py-6"
+                    >
                         {actor.name}
-                    </h1>
+                    </ShimmerName>
 
                     {/* SHORT BIO */}
                     <p className="text-white text-xl mb-10">
@@ -286,10 +297,20 @@ export default function ProfilePage({ actor }) {
                     </div>
                 )}
 
+                <div className="mt-24 text-center">
+                    <a
+                        href="/#catalogo"
+                        className="inline-flex items-center gap-2 px-6 py-3 border border-[#C6A75E]/40 text-[#C6A75E] hover:bg-[#C6A75E] hover:text-black transition rounded-full uppercase tracking-wide text-sm"
+                    >
+                        <ArrowLeft size={16} />
+                        Ver todos los actores
+                    </a>
+                </div>
+
             </div>
 
             {/* REPRODUCTOR GLOBAL */}
-            <AudioPlayer track={currentTrack} />
+            <AudioPlayer track={currentTrack} onClose={() => setCurrentTrack(null)} />
 
         </>
     );

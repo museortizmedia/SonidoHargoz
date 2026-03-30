@@ -4,6 +4,7 @@ import actor3 from "../assets/actores/actor3.png";
 import actor4 from "../assets/actores/actor4.png";
 import actor5 from "../assets/actores/actor5.png";
 import actor6 from "../assets/actores/actor6.png";
+import actor7 from "../assets/actores/actor7.png";
 
 import demo1 from "../assets/demos/demo1.mp3";
 import demo2 from "../assets/demos/demo2.mp3";
@@ -11,6 +12,7 @@ import demo3 from "../assets/demos/demo3.mp3";
 import demo4 from "../assets/demos/demo4.mp3";
 import demo5 from "../assets/demos/demo5.mp3";
 import demo6 from "../assets/demos/demo6.mp3";
+import demo7 from "../assets/demos/demo7.mp3";
 
 const defaultBadges = [
     { label: "Comercial", icon: "mic" },
@@ -278,6 +280,44 @@ Especialista en narración profunda y dramática enfocado en proyectos audiovisu
         media: {
             image: actor6,
             demo: demo6,
+            gallery: []
+        },
+
+        contact: {},
+        social: {},
+        stats: {
+            projects: 0,
+            yearsExperience: 0
+        }
+    },
+    {
+        id: 7,
+        slug: "carlos-valero",
+        name: "Carlos Valero",
+        featured: false,
+
+        profile: {
+            shortBio: "Especialista en narración profunda y dramática.",
+            fullBio: `
+Especialista en narración profunda y dramática enfocado en proyectos audiovisuales y narrativas sonoras.
+      `,
+            skills: ["Narración dramática"],
+            awards: [],
+            languages: ["Español"],
+            badges: defaultBadges,
+            characters: [
+                {
+                    name: "Comandante Arthus",
+                    project: "Serie Sci-Fi: Eclipse",
+                    image: "/characters/arthus.jpg",
+                    demo: "/audios/arthus.mp3"
+                }
+            ]
+        },
+
+        media: {
+            image: actor7,
+            demo: demo7,
             gallery: []
         },
 

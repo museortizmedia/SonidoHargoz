@@ -193,36 +193,39 @@ export default function ActorCard({
                 {/* BACK */}
                 <div className="absolute w-full h-full backface-hidden rotate-y-180 bg-neutral-900 p-6 rounded-xl border border-[#C6A75E]/30 flex flex-col">
 
-                    <div className="flex items-center justify-between mb-4">
+                    {/* HEADER SOLO TEXTO */}
+                    <div className="mb-4">
                         <h3 className="text-[#C6A75E] text-xl font-semibold">
                             {name}
                         </h3>
-
-                        <button
-                            onClick={toggleAudio}
-                            className={`p-3 rounded-full transition-all duration-300
-                            ${isPlaying
-                                    ? "bg-gradient-to-r from-[#C6A75E] to-yellow-500 shadow-[0_0_20px_rgba(255,215,0,0.4)]"
-                                    : "bg-blue-600 hover:bg-blue-500"
-                                }`}
-                        >
-                            {isPlaying ? <Pause size={18} /> : <Play size={18} />}
-                        </button>
                     </div>
 
+                    {/* BIO */}
                     <div className="flex-1 overflow-y-auto pr-2 text-sm text-gray-300 whitespace-pre-line">
                         {profile.fullBio}
                     </div>
 
-                    <div className="mt-4 flex gap-3">
+                    {/* ACTIONS BOTTOM */}
+                    <div className="mt-5 flex items-center justify-between gap-3">
+
+                        {/* PERFIL */}
                         <a
                             href={`/profile/${slug.toLowerCase().replace(/\s+/g, "-")}`}
                             onClick={(e) => e.stopPropagation()}
-                            className="flex items-center gap-2 text-xs uppercase tracking-wide px-4 py-2 border border-[#C6A75E]/40 text-[#C6A75E] hover:bg-[#C6A75E] hover:text-black transition rounded"
+                            className="flex items-center gap-2 text-xs uppercase tracking-wide px-4 py-2 border border-[#C6A75E]/40 text-[#C6A75E] hover:bg-[#C6A75E] hover:text-black transition rounded self-end"
                         >
                             <User size={14} />
                             Ver perfil
                         </a>
+
+                        {/* PLAY */}
+                        <button
+                            onClick={toggleAudio}
+                            className={`flex items-center justify-center w-16 h-16 rounded-full transition-all duration-300 bg-gradient-to-r ${isPlaying ? "from-[#C6A75E] to-yellow-500 shadow-[0_0_20px_rgba(255,215,0,0.4)]" : "from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-600"}`}
+                        >
+                            {isPlaying ? <Pause size={20} /> : <Play size={20} />}
+                        </button>
+
                     </div>
 
                 </div>

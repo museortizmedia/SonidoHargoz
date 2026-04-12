@@ -18,3 +18,55 @@ select,
 .font-baskerville {
     font-family: "Poppins", sans-serif;
 }
+
+/* ================================
+   SCROLLBAR THEME
+   ================================ */
+
+:root {
+    --scrollbar-track: rgba(19, 20, 20, 0.5);
+    --scrollbar-thumb: rgba(59, 130, 246, 0.18);
+    --scrollbar-thumb-hover: rgba(198, 167, 94, 0.55);
+    --scrollbar-thumb-active: rgba(198, 167, 94, 0.85);
+    --scrollbar-size: 8px;
+}
+
+/* asegúrate que el viewport sea oscuro */
+html,
+body {
+    background: #191b1f;
+}
+
+/* Chrome / Edge / Safari */
+::-webkit-scrollbar {
+    width: var(--scrollbar-size);
+    height: var(--scrollbar-size);
+}
+
+::-webkit-scrollbar-track {
+    background: var(--scrollbar-track);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+    border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--scrollbar-thumb-hover);
+}
+
+::-webkit-scrollbar-thumb:active {
+    background: var(--scrollbar-thumb-active);
+}
+
+/* quitar flechas */
+::-webkit-scrollbar-button {
+    display: none;
+}
+
+/* Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}

@@ -5,6 +5,7 @@ import actor4 from "../assets/actores/actor4.png";
 import actor5 from "../assets/actores/actor5.png";
 import actor6 from "../assets/actores/actor6.png";
 import actor7 from "../assets/actores/actor7.png";
+import actor8 from "../assets/actores/actor8.png";
 
 import demo1 from "../assets/demos/demo1.mp3";
 import demo2 from "../assets/demos/demo2.mp3";
@@ -13,6 +14,7 @@ import demo4 from "../assets/demos/demo4.mp3";
 import demo5 from "../assets/demos/demo5.mp3";
 import demo6 from "../assets/demos/demo6.mp3";
 import demo7 from "../assets/demos/demo7.mp3";
+import demo8 from "../assets/demos/demo8.mp3";
 
 const defaultBadges = [
     { label: "Comercial", icon: "mic" },
@@ -318,6 +320,50 @@ Especialista en narración profunda y dramática enfocado en proyectos audiovisu
         media: {
             image: actor7,
             demo: demo7,
+            gallery: []
+        },
+
+        contact: {},
+        social: {},
+        stats: {
+            projects: 0,
+            yearsExperience: 0
+        }
+    },
+    {
+        id: 8,
+        slug: "jaime-levano",
+        name: "Jaime Lévano",
+        featured: false,
+
+        profile: {
+            shortBio: "Especialista en narración profunda y dramática.",
+            fullBio: `
+            Soy Jaime Lévano, Licenciado en Ciencias de la Comunicación, especialista en doblaje de voz y locución comercial. Tengo experiencia en diversos proyectos de voz, interpretando distintos estilos y registros con naturalidad. Destaco por mi versatilidad, capacidad actoral y habilidad para adaptar mi voz a diferentes personajes y necesidades comunicativas.
+      `,
+            skills: [
+                "Doblaje de voz",
+                "Locución comercial",
+                "Narración",
+                "Voz institucional",
+                "Español neutro"
+            ],
+            awards: [],
+            languages: ["Español"],
+            badges: defaultBadges,
+            characters: [
+                {
+                    name: "Comandante Arthus",
+                    project: "Serie Sci-Fi: Eclipse",
+                    image: "/characters/arthus.jpg",
+                    demo: "/audios/arthus.mp3"
+                }
+            ]
+        },
+
+        media: {
+            image: actor8,
+            demo: demo8,
             gallery: []
         },
 

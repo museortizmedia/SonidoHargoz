@@ -19,6 +19,15 @@ export default function ActorCard({
     const analyserRef = useRef(null);
     const animationRef = useRef(null);
 
+    // Mapeo de posiciones para object-position
+    const positionMap = {
+        top: "object-top",
+        middle: "object-center",
+        bottom: "object-bottom"
+    };
+
+    const imagePosition = positionMap[media.image_position] || "object-center";
+
     /* ==============================
        DETECT TOUCH DEVICE
     ============================== */
@@ -185,7 +194,7 @@ export default function ActorCard({
                             e.target.src = defaultImg;
                             e.target.onerror = null;
                         }}
-                        className="w-full h-full object-cover transition duration-500"
+                        className={`w-full h-full object-cover transition duration-500 ${imagePosition}`}
                     />
 
                     <div className="absolute bottom-0 bg-black/70 w-full p-3 backdrop-blur-md text-center">

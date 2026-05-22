@@ -9,7 +9,12 @@ import {
     Sparkles,
     Film,
     BookOpen,
-    ArrowLeft
+    ArrowLeft,
+    Instagram,
+    Twitter,
+    Youtube,
+    Linkedin,
+    Facebook
 } from "lucide-react";
 
 import AudioPlayer from "../components/AudioPlayer";
@@ -28,6 +33,27 @@ export default function ProfilePage({ actor }) {
         film: Film,
         book: BookOpen
     };
+
+    // Mapeo de Redes Sociales
+    const socialIconMap = {
+        instagram: Instagram,
+        twitter: Twitter,
+        x: Twitter, // Alias para X
+        youtube: Youtube,
+        linkedin: Linkedin,
+        facebook: Facebook,
+        web: Globe,
+        website: Globe
+    };
+
+    // Mapeo de posiciones para object-position
+    const positionMap = {
+        top: "object-top",
+        middle: "object-center",
+        bottom: "object-bottom"
+    };
+
+    const heroPosition = positionMap[actor.media.image_position] || "object-center";
 
     const shareProfile = async () => {
         const url = window.location.href;
@@ -76,7 +102,7 @@ export default function ProfilePage({ actor }) {
                         e.target.src = defaultImg;
                         e.target.onerror = null;
                     }}
-                    className="absolute w-full h-full object-cover grayscale contrast-110 brightness-75"
+                    className={`absolute w-full h-full object-cover grayscale contrast-110 brightness-75 ${heroPosition}`}
                 />
 
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/90 to-black/40" />
@@ -163,6 +189,29 @@ export default function ProfilePage({ actor }) {
                         )}
 
                     </div>
+
+                    {/* REDES SOCIALES DINÁMICAS */}
+                    {actor.social && Object.keys(actor.social).length > 0 && (
+                        <div className="mt-12 flex justify-center gap-6">
+                            {Object.entries(actor.social).map(([platform, url]) => {
+                                const Icon = socialIconMap[platform.toLowerCase()] || Globe;
+                                if (!url) return null;
+                                
+                                return (
+                                    <a
+                                        key={platform}
+                                        href={url}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-white/50 hover:text-[#C6A75E] transition-all hover:scale-110 p-2"
+                                        title={platform}
+                                    >
+                                        <Icon size={24} />
+                                    </a>
+                                );
+                            })}
+                        </div>
+                    )}
                 </div>
 
                 {/* SCROLL INDICATOR */}
@@ -271,7 +320,7 @@ export default function ProfilePage({ actor }) {
                                             e.target.src = defaultImg;
                                             e.target.onerror = null; // evita bucles infinitos
                                         }}
-                                        className="w-full h-72 object-cover grayscale group-hover:grayscale-0 transition duration-500"
+                                        className={`w-full h-72 object-cover grayscale group-hover:grayscale-0 transition duration-500 ${positionMap[character.image_position] || "object-center"}`}
                                     />
 
                                     <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent opacity-90" />

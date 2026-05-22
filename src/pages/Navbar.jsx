@@ -44,7 +44,7 @@ export default function Navbar() {
                     </a>
 
                     <a
-                        href="#catalogo"
+                        href="/#catalogo"
                         className="flex items-center gap-2 text-white hover:text-blue-400 transition hover:scale-105"
                     >
                         <Grid3X3 size={16} />
@@ -52,7 +52,7 @@ export default function Navbar() {
                     </a>
 
                     <a
-                        href="#contacto"
+                        href="/#contacto"
                         className="flex items-center gap-2 text-white hover:text-blue-400 transition hover:scale-105"
                     >
                         <Mail size={16} />
@@ -66,9 +66,9 @@ export default function Navbar() {
                     <a href="/#academia">
                         <Button
                             variant="blue"
-                            className="h-[70%] px-5 text-sm hover:scale-105 transition cursor-pointer shadow-md flex flex-row gap-2"
+                            className="h-[70%] px-5 text-sm hover:scale-105 transition cursor-pointer shadow-md flex flex-row items-center gap-2"
                         >
-                            <GraduationCap size={18} />
+                            <GraduationCap size={16} />
                             Academia
                         </Button>
                     </a>
@@ -98,7 +98,7 @@ export default function Navbar() {
                     </a>
 
                     <a
-                        href="#catalogo"
+                        href="/#catalogo"
                         onClick={closeMenu}
                         className="flex items-center gap-3 text-white hover:text-blue-400 transition"
                     >
@@ -107,7 +107,7 @@ export default function Navbar() {
                     </a>
 
                     <a
-                        href="#contacto"
+                        href="/#contacto"
                         onClick={closeMenu}
                         className="flex items-center gap-3 text-white hover:text-blue-400 transition"
                     >

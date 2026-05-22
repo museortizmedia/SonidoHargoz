@@ -7,6 +7,7 @@ import actor6 from "../assets/actores/actor6.png";
 import actor7 from "../assets/actores/actor7.png";
 import actor8 from "../assets/actores/actor8.png";
 import actor9 from "../assets/actores/actor9.png";
+import actor10 from "../assets/actores/actor10.png";
 
 import demo1 from "../assets/demos/demo1.mp3";
 import demo2 from "../assets/demos/demo2.mp3";
@@ -17,7 +18,9 @@ import demo5 from "../assets/demos/demo5.mp3";
 import demo6 from "../assets/demos/demo6.mp3";
 import demo7 from "../assets/demos/demo7.mp3";
 import demo8 from "../assets/demos/demo8.mp3";
-import demo9 from "../assets/demos/demo9.mp3";      
+import demo9 from "../assets/demos/demo9.mp3";
+import demo10 from "../assets/demos/demo10.mp3";
+
 
 const defaultBadges = [
     { label: "Comercial", icon: "mic" },
@@ -26,6 +29,101 @@ const defaultBadges = [
 ];
 
 export const actors = [
+    // Tony
+    {
+        id: 3,
+        slug: "antonio-tony-arzuza",
+        name: "Antonio 'Tony' Arzuza",
+        featured: false,
+
+        profile: {
+            shortBio: "Especialista en narración profunda y dramática.",
+            fullBio: `
+Soy Tony. Co-creador y Co-director de Sonido Hargoz. Locutor, actor de voz y doblaje con mas de 8 años de experiencia. ¡Bienvenidos!
+      `,
+            skills: ["Narración dramática"],
+            awards: [],
+            languages: ["Español"],
+            badges: defaultBadges,
+            characters: [
+                {
+                    name: "Audición Voz Narradora Andes",
+                    project: "La Joya de los Andes Andoke",
+                    image: "/characters/arthus.jpg",
+                    demo: demo3_1
+                }
+            ]
+        },
+
+        media: {
+            image: actor3,
+            demo: demo3,
+            image_position: "middle",
+            gallery: []
+        },
+
+        contact: {},
+        social: {
+            instagram: "",
+            youtube: "",
+            linkedin: "",
+            website: ""
+        },
+        stats: {
+            projects: 0,
+            yearsExperience: 0
+        }
+    },
+
+    // Samuel
+    {
+        id: 10,
+        slug: "samuel-diaz-gomez",
+        name: "Samuel Diaz Gomez",
+        featured: true,
+
+        profile: {
+            shortBio: "Especialista en narración profunda y dramática.",
+            fullBio: `Hola, soy Samuel Diaz Gómez, un joven amante del doblaje, enfocado en la narración profunda y dramática, en la interpretación y construcción de voz de personajes o narrativas para piezas audiovisuales y diversos formatos multimedia.`,
+            skills: [
+                "Narración dramática",
+                "Locución comercial",
+                "Voz institucional"
+            ],
+            awards: [],
+            languages: ["Español"],
+            badges: defaultBadges,
+            characters: [
+                
+            ]
+        },
+
+        media: {
+            image: actor10,
+            demo: demo10,
+            gallery: []
+        },
+
+        contact: {
+            email: "",
+            phone: "",
+            website: "https://sonido-hargoz.vercel.app/profile/luka"
+        },
+
+        social: {
+            instagram: "",
+            youtube: "",
+            linkedin: "",
+            website: ""
+        },
+
+        stats: {
+            projects: 0,
+            yearsExperience: 0
+        }
+    },
+
+    // Luka
     {
         id: 1,
         slug: "luka",
@@ -74,6 +172,7 @@ Especialista en narración profunda y dramática con experiencia en interpretaci
         }
     },
 
+    // Santiago
     {
         id: 2,
         slug: "santiago-zambrano",
@@ -130,46 +229,8 @@ Experiencia en producción audiovisual, radio, televisión y ecosistemas digital
             yearsExperience: 4
         }
     },
-    // Tony
-    {
-        id: 3,
-        slug: "antonio-tony-arzuza",
-        name: "Antonio 'Tony' Arzuza",
-        featured: false,
 
-        profile: {
-            shortBio: "Especialista en narración profunda y dramática.",
-            fullBio: `
-Soy Tony. Co-creador y Co-director de Sonido Hargoz. Locutor, actor de voz y doblaje con mas de 8 años de experiencia. ¡Bienvenidos!
-      `,
-            skills: ["Narración dramática"],
-            awards: [],
-            languages: ["Español"],
-            badges: defaultBadges,
-            characters: [
-                {
-                    name: "Audición Voz Narradora Andes",
-                    project: "La Joya de los Andes Andoke",
-                    image: "/characters/arthus.jpg",
-                    demo: demo3_1
-                }
-            ]
-        },
-
-        media: {
-            image: actor3,
-            demo: demo3,
-            gallery: []
-        },
-
-        contact: {},
-        social: {},
-        stats: {
-            projects: 0,
-            yearsExperience: 0
-        }
-    },
-
+    // Valentina
     {
         id: 4,
         slug: "valentina-toro",
@@ -192,6 +253,7 @@ Especialista en narración profunda y dramática con experiencia en interpretaci
 
         media: {
             image: actor4,
+            image_position: "top",
             demo: demo4,
             gallery: []
         },
@@ -204,6 +266,7 @@ Especialista en narración profunda y dramática con experiencia en interpretaci
         }
     },
 
+    // Nicolás
     {
         id: 5,
         slug: "nicolas-barrera",
@@ -243,6 +306,7 @@ Especialista en narración profunda y dramática enfocado en proyectos audiovisu
         }
     },
 
+    // Ludobina 'Lula' León
     {
         id: 6,
         slug: "lula",
@@ -282,6 +346,7 @@ Especialista en narración profunda y dramática enfocado en proyectos audiovisu
         }
     },
 
+    // Carlos Valero
     {
         id: 7,
         slug: "carlos-valero",
@@ -321,6 +386,7 @@ Especialista en narración profunda y dramática enfocado en proyectos audiovisu
         }
     },
 
+    // Jaime Lévano
     {
         id: 8,
         slug: "jaime-levano",
@@ -361,6 +427,7 @@ Especialista en narración profunda y dramática enfocado en proyectos audiovisu
         }
     },
 
+    // Leslie Vianey Esquivias Torres
     {
         id: 9,
         slug: "vianey",

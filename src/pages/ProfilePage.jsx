@@ -16,6 +16,7 @@ import AudioPlayer from "../components/AudioPlayer";
 import { useRef, useState } from "react";
 import Button from "../components/Button";
 import ShimmerName from "../components/ShimmerName";
+import defaultImg from "../assets/default.png";
 
 export default function ProfilePage({ actor }) {
 
@@ -71,6 +72,10 @@ export default function ProfilePage({ actor }) {
                 <img
                     src={actor.media.image}
                     alt={actor.name}
+                    onError={(e) => {
+                        e.target.src = defaultImg;
+                        e.target.onerror = null;
+                    }}
                     className="absolute w-full h-full object-cover grayscale contrast-110 brightness-75"
                 />
 
@@ -262,6 +267,10 @@ export default function ProfilePage({ actor }) {
                                     <img
                                         src={character.image}
                                         alt={character.name}
+                                        onError={(e) => {
+                                            e.target.src = defaultImg;
+                                            e.target.onerror = null; // evita bucles infinitos
+                                        }}
                                         className="w-full h-72 object-cover grayscale group-hover:grayscale-0 transition duration-500"
                                     />
 

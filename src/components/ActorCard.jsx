@@ -1,5 +1,6 @@
 import { useRef, useState, useEffect } from "react";
 import { Play, Pause, User } from "lucide-react";
+import defaultImg from "../assets/default.png";
 
 export default function ActorCard({
     slug,
@@ -180,6 +181,10 @@ export default function ActorCard({
                     <img
                         src={media.image}
                         alt={name}
+                        onError={(e) => {
+                            e.target.src = defaultImg;
+                            e.target.onerror = null;
+                        }}
                         className="w-full h-full object-cover transition duration-500"
                     />
 

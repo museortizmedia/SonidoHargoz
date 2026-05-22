@@ -11,6 +11,7 @@ import actor9 from "../assets/actores/actor9.png";
 import demo1 from "../assets/demos/demo1.mp3";
 import demo2 from "../assets/demos/demo2.mp3";
 import demo3 from "../assets/demos/demo3.mp3";
+import demo3_1 from "../assets/demos/demo3_1.mp3";
 import demo4 from "../assets/demos/demo4.mp3";
 import demo5 from "../assets/demos/demo5.mp3";
 import demo6 from "../assets/demos/demo6.mp3";
@@ -45,12 +46,7 @@ Especialista en narración profunda y dramática con experiencia en interpretaci
             languages: ["Español"],
             badges: defaultBadges,
             characters: [
-                {
-                    name: "Comandante Arthus",
-                    project: "Serie Sci-Fi: Eclipse",
-                    image: "/characters/arthus.jpg",
-                    demo: "/audios/arthus.mp3"
-                }
+                
             ]
         },
 
@@ -107,12 +103,7 @@ Experiencia en producción audiovisual, radio, televisión y ecosistemas digital
             languages: ["Español"],
             badges: defaultBadges,
             characters: [
-                {
-                    name: "Comandante Arthus",
-                    project: "Serie Sci-Fi: Eclipse",
-                    image: "/characters/arthus.jpg",
-                    demo: "/audios/arthus.mp3"
-                }
+                
             ]
         },
 
@@ -139,7 +130,7 @@ Experiencia en producción audiovisual, radio, televisión y ecosistemas digital
             yearsExperience: 4
         }
     },
-
+    // Tony
     {
         id: 3,
         slug: "antonio-tony-arzuza",
@@ -149,7 +140,7 @@ Experiencia en producción audiovisual, radio, televisión y ecosistemas digital
         profile: {
             shortBio: "Especialista en narración profunda y dramática.",
             fullBio: `
-Especialista en narración profunda y dramática con capacidad interpretativa para proyectos audiovisuales y comerciales.
+Soy Tony. Co-creador y Co-director de Sonido Hargoz. Locutor, actor de voz y doblaje con mas de 8 años de experiencia. ¡Bienvenidos!
       `,
             skills: ["Narración dramática"],
             awards: [],
@@ -157,10 +148,10 @@ Especialista en narración profunda y dramática con capacidad interpretativa pa
             badges: defaultBadges,
             characters: [
                 {
-                    name: "Comandante Arthus",
-                    project: "Serie Sci-Fi: Eclipse",
+                    name: "Audición Voz Narradora Andes",
+                    project: "La Joya de los Andes Andoke",
                     image: "/characters/arthus.jpg",
-                    demo: "/audios/arthus.mp3"
+                    demo: demo3_1
                 }
             ]
         },
@@ -195,12 +186,7 @@ Especialista en narración profunda y dramática con experiencia en interpretaci
             languages: ["Español"],
             badges: defaultBadges,
             characters: [
-                {
-                    name: "Comandante Arthus",
-                    project: "Serie Sci-Fi: Eclipse",
-                    image: "/characters/arthus.jpg",
-                    demo: "/audios/arthus.mp3"
-                }
+
             ]
         },
 
@@ -357,12 +343,7 @@ Especialista en narración profunda y dramática enfocado en proyectos audiovisu
             languages: ["Español"],
             badges: defaultBadges,
             characters: [
-                {
-                    name: "Comandante Arthus",
-                    project: "Serie Sci-Fi: Eclipse",
-                    image: "/characters/arthus.jpg",
-                    demo: "/audios/arthus.mp3"
-                }
+                
             ]
         },
 
@@ -396,12 +377,7 @@ Especialista en narración profunda y dramática con capacidad interpretativa pa
             languages: ["Español"],
             badges: defaultBadges,
             characters: [
-                {
-                    name: "Comandante Arthus",
-                    project: "Serie Sci-Fi: Eclipse",
-                    image: "/characters/arthus.jpg",
-                    demo: "/audios/arthus.mp3"
-                }
+                
             ]
         },
 

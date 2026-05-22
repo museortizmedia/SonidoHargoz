@@ -21,7 +21,9 @@ import demo8 from "../assets/demos/demo8.mp3";
 import demo9 from "../assets/demos/demo9.mp3";
 import demo10 from "../assets/demos/demo10.mp3";
 
-import character3_1 from "../assets/actores/characters3/Frigidum.jpg";
+import character_image_3_2 from "../assets/actores/characters3/Frigidum.jpg";
+import character_demo_3_2 from "../assets/actores/characters3/character3_1_demo.mp4";
+
 
 
 const defaultBadges = [
@@ -36,6 +38,7 @@ export const actors = [
         id: 3,
         slug: "antonio-tony-arzuza",
         name: "Antonio 'Tony' Arzuza",
+        gender: "masculino",
         featured: false,
 
         profile: {
@@ -57,8 +60,8 @@ Soy Tony. Co-creador y Co-director de Sonido Hargoz. Locutor, actor de voz y dob
                 {
                     name: "Frigidum",
                     project: "Frailejón Ernesto Pérez y el acecho de las sombras siniestras",
-                    image: character3_1,
-                    demo: demo3_1
+                    image: character_image_3_2,
+                    demo: character_demo_3_2
                 }
             ]
         },
@@ -88,6 +91,7 @@ Soy Tony. Co-creador y Co-director de Sonido Hargoz. Locutor, actor de voz y dob
         id: 10,
         slug: "samuel-diaz-gomez",
         name: "Samuel Diaz Gomez",
+        gender: "masculino",
         featured: true,
 
         profile: {
@@ -136,6 +140,7 @@ Soy Tony. Co-creador y Co-director de Sonido Hargoz. Locutor, actor de voz y dob
         id: 1,
         slug: "luka",
         name: "Luisana 'Luka' Otero",
+        gender: "femenino",
         featured: true,
 
         profile: {
@@ -185,6 +190,7 @@ Especialista en narración profunda y dramática con experiencia en interpretaci
         id: 2,
         slug: "santiago-zambrano",
         name: "Santiago Zambrano",
+        gender: "masculino",
         featured: true,
 
         profile: {
@@ -243,6 +249,7 @@ Experiencia en producción audiovisual, radio, televisión y ecosistemas digital
         id: 4,
         slug: "valentina-toro",
         name: "Valentina Toro",
+        gender: "femenino",
         featured: false,
 
         profile: {
@@ -279,6 +286,7 @@ Especialista en narración profunda y dramática con experiencia en interpretaci
         id: 5,
         slug: "nicolas-barrera",
         name: "Nicolás Barrera",
+        gender: "masculino",
         featured: false,
 
         profile: {
@@ -319,6 +327,7 @@ Especialista en narración profunda y dramática enfocado en proyectos audiovisu
         id: 6,
         slug: "lula",
         name: "Ludobina 'Lula' León",
+        gender: "femenino",
         featured: false,
 
         profile: {
@@ -359,6 +368,7 @@ Especialista en narración profunda y dramática enfocado en proyectos audiovisu
         id: 7,
         slug: "carlos-valero",
         name: "Carlos Valero",
+        gender: "masculino",
         featured: false,
 
         profile: {
@@ -399,6 +409,7 @@ Especialista en narración profunda y dramática enfocado en proyectos audiovisu
         id: 8,
         slug: "jaime-levano",
         name: "Jaime Lévano",
+        gender: "masculino",
         featured: false,
 
         profile: {
@@ -440,6 +451,7 @@ Especialista en narración profunda y dramática enfocado en proyectos audiovisu
         id: 9,
         slug: "vianey",
         name: "Leslie Vianey Esquivias Torres",
+        gender: "femenino",
         featured: false,
 
         profile: {

@@ -1,7 +1,7 @@
 import { Play, Pause, X } from "lucide-react";
 import { useRef, useState, useEffect } from "react";
 
-export default function AudioPlayer({ track, onClose }) {
+export default function AudioPlayer({ track, onClose, onPlayPause }) {
     const audioRef = useRef(null);
     const analyserRef = useRef(null);
     const audioContextRef = useRef(null);
@@ -13,6 +13,11 @@ export default function AudioPlayer({ track, onClose }) {
     const [currentTime, setCurrentTime] = useState(0);
     const [duration, setDuration] = useState(0);
     const [isDragging, setIsDragging] = useState(false);
+
+    // Notificar cambio de estado al padre
+    useEffect(() => {
+        if (onPlayPause) onPlayPause(playing);
+    }, [playing, onPlayPause]);
 
     /* =========================
        CARGA TRACK

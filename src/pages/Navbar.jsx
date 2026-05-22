@@ -64,13 +64,13 @@ export default function Navbar() {
                 {/* Desktop Button */}
                 <div className="hidden md:block">
                     <a href="/#academia">
-                        <Button
+                        {/*<Button
                             variant="blue"
                             className="h-[70%] px-5 text-sm hover:scale-105 transition cursor-pointer shadow-md flex flex-row items-center gap-2"
                         >
                             <GraduationCap size={16} />
                             Academia
-                        </Button>
+                        </Button>*/}
                     </a>
                 </div>
 
@@ -117,13 +117,13 @@ export default function Navbar() {
 
                     {/* Academia al final */}
                     <a href="/#academia" onClick={closeMenu}>
-                        <Button
+                        {/*<Button
                             variant="blue"
                             className="w-full py-3 text-sm shadow-md flex flex-row justify-center items-center gap-2"
                         >
                             <GraduationCap size={18} />
                             Academia
-                        </Button>
+                        </Button>*/}
                     </a>
 
                 </div>

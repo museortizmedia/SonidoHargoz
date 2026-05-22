@@ -1,5 +1,6 @@
 import {
     Play,
+    Pause,
     Share2,
     Mail,
     Download,
@@ -27,6 +28,7 @@ export default function ProfilePage({ actor }) {
 
     const [copied, setCopied] = useState(false);
     const [currentTrack, setCurrentTrack] = useState(null);
+    const [isPlayingGlobal, setIsPlayingGlobal] = useState(false);
 
     const iconMap = {
         mic: Mic,
@@ -308,48 +310,63 @@ export default function ProfilePage({ actor }) {
 
                         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
 
-                            {actor.profile.characters.map((character) => (
-                                <div
-                                    key={character.name}
-                                    className="group relative rounded-2xl overflow-hidden border border-white/10 bg-[#0f0f14] hover:border-blue-500/50 transition duration-500"
-                                >
-                                    <img
-                                        src={character.image}
-                                        alt={character.name}
-                                        onError={(e) => {
-                                            e.target.src = defaultImg;
-                                            e.target.onerror = null; // evita bucles infinitos
-                                        }}
-                                        className={`w-full h-72 object-cover grayscale group-hover:grayscale-0 transition duration-500 ${positionMap[character.image_position] || "object-center"}`}
-                                    />
+                            {actor.profile.characters.map((character) => {
+                                const isVideo = character.demo?.toLowerCase().endsWith(".mp4") || character.demo?.toLowerCase().endsWith(".webm");
+                                const isCurrentPlaying = currentTrack?.src === character.demo && isPlayingGlobal;
 
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent opacity-90" />
+                                return (
+                                    <div
+                                        key={character.name}
+                                        className="group relative rounded-2xl overflow-hidden border border-white/10 bg-[#0f0f14] hover:border-blue-500/50 transition duration-500"
+                                    >
+                                        {isCurrentPlaying && isVideo ? (
+                                            <video
+                                                src={character.demo}
+                                                autoPlay
+                                                muted
+                                                loop
+                                                className="w-full h-72 object-cover transition duration-500"
+                                            />
+                                        ) : (
+                                            <img
+                                                src={character.image}
+                                                alt={character.name}
+                                                onError={(e) => {
+                                                    e.target.src = defaultImg;
+                                                    e.target.onerror = null; // evita bucles infinitos
+                                                }}
+                                                className={`w-full h-72 object-cover grayscale group-hover:grayscale-0 transition duration-500 ${positionMap[character.image_position] || "object-center"}`}
+                                            />
+                                        )}
 
-                                    <div className="absolute bottom-0 p-6">
-                                        <h3 className="text-white text-lg font-semibold">
-                                            {character.name}
-                                        </h3>
-                                        <p className="text-blue-400 text-sm">
-                                            {character.project}
-                                        </p>
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent opacity-90" />
+
+                                        <div className="absolute bottom-0 p-6">
+                                            <h3 className="text-white text-lg font-semibold">
+                                                {character.name}
+                                            </h3>
+                                            <p className="text-blue-400 text-sm">
+                                                {character.project}
+                                            </p>
+                                        </div>
+
+                                        {character.demo && (
+                                            <button
+                                                onClick={() =>
+                                                    setCurrentTrack({
+                                                        title: character.name,
+                                                        actor: actor.name,
+                                                        src: character.demo
+                                                    })
+                                                }
+                                                className="absolute top-4 right-4 p-2 bg-blue-600 rounded-full hover:scale-110 transition z-10"
+                                            >
+                                                {<Play size={16} />}
+                                            </button>
+                                        )}
                                     </div>
-
-                                    {character.demo && (
-                                        <button
-                                            onClick={() =>
-                                                setCurrentTrack({
-                                                    title: character.name,
-                                                    actor: actor.name,
-                                                    src: character.demo
-                                                })
-                                            }
-                                            className="absolute top-4 right-4 p-2 bg-blue-600 rounded-full hover:scale-110 transition"
-                                        >
-                                            <Play size={16} />
-                                        </button>
-                                    )}
-                                </div>
-                            ))}
+                                );
+                            })}
 
                         </div>
                     </div>
@@ -368,7 +385,11 @@ export default function ProfilePage({ actor }) {
             </div>
 
             {/* REPRODUCTOR GLOBAL */}
-            <AudioPlayer track={currentTrack} onClose={() => setCurrentTrack(null)} />
+            <AudioPlayer
+                track={currentTrack}
+                onClose={() => setCurrentTrack(null)}
+                onPlayPause={(playing) => setIsPlayingGlobal(playing)}
+            />
 
         </>
     );

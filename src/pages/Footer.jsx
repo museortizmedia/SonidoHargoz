@@ -14,9 +14,9 @@ export default function Footer() {
                 {/* Marca del desarrollador */}
                 <p className="text-sm tracking-wide text-[#C6A75E] font-semibold">
                     Hecho con ♥ por{" "}
-                    <a href="#">
+                    <a href="https://museortizmedia.github.io/" target="_blank" rel="noopener noreferrer">
                         <span className="font-bold">
-                            YO
+                            MuseOrtizMedia
                         </span>
                     </a>
                 </p>

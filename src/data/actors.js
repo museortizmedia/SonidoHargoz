@@ -21,6 +21,8 @@ import demo8 from "../assets/demos/demo8.mp3";
 import demo9 from "../assets/demos/demo9.mp3";
 import demo10 from "../assets/demos/demo10.mp3";
 
+import character3_1 from "../assets/actores/characters3/Frigidum.jpg";
+
 
 const defaultBadges = [
     { label: "Comercial", icon: "mic" },
@@ -49,7 +51,13 @@ Soy Tony. Co-creador y Co-director de Sonido Hargoz. Locutor, actor de voz y dob
                 {
                     name: "Audición Voz Narradora Andes",
                     project: "La Joya de los Andes Andoke",
-                    image: "/characters/arthus.jpg",
+                    image: "/",
+                    demo: demo3_1
+                },
+                {
+                    name: "Frigidum",
+                    project: "Frailejón Ernesto Pérez y el acecho de las sombras siniestras",
+                    image: character3_1,
                     demo: demo3_1
                 }
             ]

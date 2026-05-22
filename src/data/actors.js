@@ -300,16 +300,14 @@ Especialista en narración profunda y dramática enfocado en proyectos audiovisu
             badges: defaultBadges,
             characters: [
                 {
-                    name: "Comandante Arthus",
-                    project: "Serie Sci-Fi: Eclipse",
-                    image: "/characters/arthus.jpg",
-                    demo: "/audios/arthus.mp3"
+                    
                 }
             ]
         },
 
         media: {
             image: actor5,
+            image_position: "middle",
             demo: demo5,
             gallery: []
         },
@@ -341,16 +339,14 @@ Especialista en narración profunda y dramática enfocado en proyectos audiovisu
             badges: defaultBadges,
             characters: [
                 {
-                    name: "Comandante Arthus",
-                    project: "Serie Sci-Fi: Eclipse",
-                    image: "/characters/arthus.jpg",
-                    demo: "/audios/arthus.mp3"
+                    
                 }
             ]
         },
 
         media: {
             image: actor6,
+            image_position: "middle",
             demo: demo6,
             gallery: []
         },
@@ -392,6 +388,7 @@ Especialista en narración profunda y dramática enfocado en proyectos audiovisu
 
         media: {
             image: actor7,
+            image_position: "bottom",
             demo: demo7,
             gallery: []
         },
@@ -434,6 +431,7 @@ Especialista en narración profunda y dramática enfocado en proyectos audiovisu
 
         media: {
             image: actor8,
+            image_position: "middle",
             demo: demo8,
             gallery: []
         },
@@ -446,11 +444,11 @@ Especialista en narración profunda y dramática enfocado en proyectos audiovisu
         }
     },
 
-    // Leslie Vianey Esquivias Torres
+    // Levet
     {
         id: 9,
-        slug: "vianey",
-        name: "Leslie Vianey Esquivias Torres",
+        slug: "levet",
+        name: "Leslie 'Levet' Esquivias",
         gender: "femenino",
         featured: false,
 
@@ -470,6 +468,7 @@ Especialista en narración profunda y dramática con capacidad interpretativa pa
 
         media: {
             image: actor9,
+            image_position: "middle",
             demo: demo9,
             gallery: []
         },

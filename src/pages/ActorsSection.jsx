@@ -3,21 +3,37 @@ import ActorCard from "../components/ActorCard";
 import { actors } from "../data/actors";
 
 export default function ActorsSection() {
-    const [visibleCount, setVisibleCount] = useState(2);
-    const [step, setStep] = useState(2);
+    // Determinamos los valores iniciales basándonos en el ancho actual
+    const getInitialCount = () => {
+        if (typeof window !== "undefined") {
+            return window.innerWidth >= 1280 ? 8 : 2;
+        }
+        return 2;
+    };
+
+    const [visibleCount, setVisibleCount] = useState(getInitialCount);
+    const [step, setStep] = useState(getInitialCount);
 
     useEffect(() => {
+        let lastIsDesktop = window.innerWidth >= 1280;
+
         const handleResize = () => {
-            if (window.innerWidth >= 1280) { // xl
-                setVisibleCount(8);
-                setStep(8);
-            } else {
-                setVisibleCount(2);
-                setStep(2);
+            const currentIsDesktop = window.innerWidth >= 1280;
+
+            // Solo actualizamos el estado si cruzamos el breakpoint de escritorio (1280px)
+            // Esto evita que el scroll en móviles (que oculta/muestra la barra de direcciones y dispara resize)
+            // resetee el contador de actores visibles.
+            if (currentIsDesktop !== lastIsDesktop) {
+                lastIsDesktop = currentIsDesktop;
+                const newDefault = currentIsDesktop ? 8 : 2;
+                setStep(newDefault);
+
+                // Si pasamos a escritorio, nos aseguramos de mostrar al menos 8.
+                // Si pasamos a móvil, mantenemos los que ya estaban cargados para no "comprimir" el catálogo.
+                setVisibleCount((prev) => Math.max(prev, newDefault));
             }
         };
 
-        handleResize();
         window.addEventListener("resize", handleResize);
         return () => window.removeEventListener("resize", handleResize);
     }, []);

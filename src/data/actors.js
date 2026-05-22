@@ -6,6 +6,7 @@ import actor5 from "../assets/actores/actor5.png";
 import actor6 from "../assets/actores/actor6.png";
 import actor7 from "../assets/actores/actor7.png";
 import actor8 from "../assets/actores/actor8.png";
+import actor9 from "../assets/actores/actor9.png";
 
 import demo1 from "../assets/demos/demo1.mp3";
 import demo2 from "../assets/demos/demo2.mp3";
@@ -15,6 +16,7 @@ import demo5 from "../assets/demos/demo5.mp3";
 import demo6 from "../assets/demos/demo6.mp3";
 import demo7 from "../assets/demos/demo7.mp3";
 import demo8 from "../assets/demos/demo8.mp3";
+import demo9 from "../assets/demos/demo9.mp3";      
 
 const defaultBadges = [
     { label: "Comercial", icon: "mic" },
@@ -254,6 +256,7 @@ Especialista en narración profunda y dramática enfocado en proyectos audiovisu
             yearsExperience: 0
         }
     },
+
     {
         id: 6,
         slug: "lula",
@@ -292,6 +295,7 @@ Especialista en narración profunda y dramática enfocado en proyectos audiovisu
             yearsExperience: 0
         }
     },
+
     {
         id: 7,
         slug: "carlos-valero",
@@ -330,6 +334,7 @@ Especialista en narración profunda y dramática enfocado en proyectos audiovisu
             yearsExperience: 0
         }
     },
+
     {
         id: 8,
         slug: "jaime-levano",
@@ -373,5 +378,45 @@ Especialista en narración profunda y dramática enfocado en proyectos audiovisu
             projects: 0,
             yearsExperience: 0
         }
-    }
+    },
+
+    {
+        id: 9,
+        slug: "vianey",
+        name: "Leslie Vianey Esquivias Torres",
+        featured: false,
+
+        profile: {
+            shortBio: "Especialista en narración profunda y dramática.",
+            fullBio: `
+Especialista en narración profunda y dramática con capacidad interpretativa para proyectos audiovisuales y comerciales.
+      `,
+            skills: ["Narración dramática"],
+            awards: [],
+            languages: ["Español"],
+            badges: defaultBadges,
+            characters: [
+                {
+                    name: "Comandante Arthus",
+                    project: "Serie Sci-Fi: Eclipse",
+                    image: "/characters/arthus.jpg",
+                    demo: "/audios/arthus.mp3"
+                }
+            ]
+        },
+
+        media: {
+            image: actor9,
+            demo: demo9,
+            gallery: []
+        },
+
+        contact: {},
+        social: {},
+        stats: {
+            projects: 0,
+            yearsExperience: 0
+        }
+    },
+
 ];

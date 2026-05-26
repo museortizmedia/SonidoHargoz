@@ -28,6 +28,8 @@ export default function ActorCard({
 
     const imagePosition = positionMap[media.image_position] || "object-center";
 
+    const isVideo = media.image?.toLowerCase().endsWith(".mp4") || media.image?.toLowerCase().endsWith(".webm");
+
     /* ==============================
        DETECT TOUCH DEVICE
     ============================== */
@@ -187,15 +189,29 @@ export default function ActorCard({
                     className={`absolute w-full h-full backface-hidden rounded-xl overflow-hidden border border-[#C6A75E]/30
                     ${isPlaying ? "grayscale-0" : "grayscale"}`}
                 >
-                    <img
-                        src={media.image}
-                        alt={name}
-                        onError={(e) => {
-                            e.target.src = defaultImg;
-                            e.target.onerror = null;
-                        }}
-                        className={`w-full h-full object-cover transition duration-500 ${imagePosition}`}
-                    />
+                    {isVideo ? (
+                        <video
+                            src={media.image}
+                            className={`w-full h-full object-cover transition duration-500 ${imagePosition}`}
+                            muted
+                            playsInline
+                            onMouseOver={(e) => e.target.play()}
+                            onMouseOut={(e) => {
+                                e.target.pause();
+                                e.target.currentTime = 0;
+                            }}
+                        />
+                    ) : (
+                        <img
+                            src={media.image || defaultImg}
+                            alt={name}
+                            onError={(e) => {
+                                e.target.src = defaultImg;
+                                e.target.onerror = null;
+                            }}
+                            className={`w-full h-full object-cover transition duration-500 ${imagePosition}`}
+                        />
+                    )}
 
                     <div className="absolute bottom-0 bg-black/70 w-full p-3 backdrop-blur-md text-center">
                         <h3 className="text-[#C6A75E] text-lg font-semibold">

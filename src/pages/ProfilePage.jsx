@@ -19,16 +19,116 @@ import {
 } from "lucide-react";
 
 import AudioPlayer from "../components/AudioPlayer";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import Button from "../components/Button";
 import ShimmerName from "../components/ShimmerName";
 import defaultImg from "../assets/default.png";
+
+// SUB-COMPONENTE PARA PERSONAJES
+function CharacterCard({ character, actorName, currentTrack, isPlayingGlobal, currentTimeGlobal, onPlayPause, positionMap }) {
+    const videoRef = useRef(null);
+    const isVideo = character.demo?.toLowerCase().endsWith(".mp4") || character.demo?.toLowerCase().endsWith(".webm");
+    const isCurrentPlaying = currentTrack?.src === character.demo && isPlayingGlobal;
+    
+    // Determinar si debemos mostrar el video como miniatura estática
+    const showVideoThumbnail = isVideo && (!character.image || character.image === "/");
+
+    // Sincronizar reproducción del video con el estado global
+    useEffect(() => {
+        const videoEl = videoRef.current;
+        if (!videoEl || !isVideo) return;
+
+        if (isCurrentPlaying) {
+            videoEl.play().catch(() => {});
+        } else {
+            // Solo pausamos, NO reseteamos el tiempo para que esté sincronizado con el reproductor global
+            videoEl.pause();
+        }
+    }, [isCurrentPlaying, isVideo]);
+
+    // Sincronizar el tiempo del video con el tiempo del audio global
+    useEffect(() => {
+        const videoEl = videoRef.current;
+        if (!videoEl || !isVideo || !isCurrentPlaying) return;
+
+        // Solo sincronizamos si la diferencia es significativa (> 0.3s) para evitar saltos visuales constantes
+        if (Math.abs(videoEl.currentTime - currentTimeGlobal) > 0.3) {
+            videoEl.currentTime = currentTimeGlobal;
+        }
+    }, [currentTimeGlobal, isCurrentPlaying, isVideo]);
+
+    return (
+        <div
+            className="group relative rounded-2xl overflow-hidden border border-white/10 bg-[#0f0f14] hover:border-blue-500/50 transition duration-500"
+        >
+            {(isCurrentPlaying && isVideo) || showVideoThumbnail ? (
+                <video
+                    ref={videoRef}
+                    src={character.demo}
+                    muted
+                    loop={isCurrentPlaying}
+                    playsInline
+                    className={`w-full h-72 object-cover transition duration-500 ${!isCurrentPlaying ? "grayscale group-hover:grayscale-0" : ""}`}
+                    onMouseOver={(e) => {
+                        if (!isCurrentPlaying && isVideo) {
+                            e.target.play().catch(() => {});
+                        }
+                    }}
+                    onMouseOut={(e) => {
+                        if (!isCurrentPlaying && isVideo) {
+                            e.target.pause();
+                            e.target.currentTime = 0; // Solo reseteamos en hover, no en play global
+                        }
+                    }}
+                />
+            ) : (
+                <img
+                    src={character.image || defaultImg}
+                    alt={character.name}
+                    onError={(e) => {
+                        e.target.src = defaultImg;
+                        e.target.onerror = null;
+                    }}
+                    className={`w-full h-72 object-cover grayscale group-hover:grayscale-0 transition duration-500 ${positionMap[character.image_position] || "object-center"}`}
+                />
+            )}
+
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent opacity-90" />
+
+            <div className="absolute bottom-0 p-6">
+                <h3 className="text-white text-lg font-semibold">
+                    {character.name}
+                </h3>
+                <p className="text-blue-400 text-sm">
+                    {character.project}
+                </p>
+            </div>
+
+            {character.demo && (
+                <button
+                    onClick={() =>
+                        onPlayPause({
+                            title: character.name,
+                            actor: actorName,
+                            src: character.demo
+                        })
+                    }
+                    className="absolute top-4 right-4 p-2 bg-blue-600 rounded-full hover:scale-110 transition z-10"
+                >
+                    {isCurrentPlaying ? <Pause size={16} /> : <Play size={16} />}
+                </button>
+            )}
+        </div>
+    );
+}
 
 export default function ProfilePage({ actor }) {
 
     const [copied, setCopied] = useState(false);
     const [currentTrack, setCurrentTrack] = useState(null);
     const [isPlayingGlobal, setIsPlayingGlobal] = useState(false);
+    const [currentTimeGlobal, setCurrentTimeGlobal] = useState(0);
+    const audioPlayerRef = useRef(null);
 
     const iconMap = {
         mic: Mic,
@@ -70,6 +170,16 @@ export default function ProfilePage({ actor }) {
             navigator.clipboard.writeText(url);
             setCopied(true);
             setTimeout(() => setCopied(false), 2000);
+        }
+    };
+
+    const handlePlayPause = (track) => {
+        if (currentTrack?.src === track.src) {
+            // Si es el mismo track, alternamos play/pause usando la ref del reproductor
+            audioPlayerRef.current?.toggle();
+        } else {
+            // Si es un track nuevo, lo cargamos
+            setCurrentTrack(track);
         }
     };
 
@@ -164,14 +274,14 @@ export default function ProfilePage({ actor }) {
 
                         <Button variant="blue" className="flex items-center gap-2"
                             onClick={() =>
-                                setCurrentTrack({
+                                handlePlayPause({
                                     title: "Demo Profesional",
                                     actor: actor.name,
                                     src: actor.media.demo
                                 })
                             }
                         >
-                            <Play size={18} />
+                            {currentTrack?.src === actor.media.demo && isPlayingGlobal ? <Pause size={18} /> : <Play size={18} />}
                             Escuchar demo
                         </Button>
 
@@ -310,63 +420,18 @@ export default function ProfilePage({ actor }) {
 
                         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
 
-                            {actor.profile.characters.map((character) => {
-                                const isVideo = character.demo?.toLowerCase().endsWith(".mp4") || character.demo?.toLowerCase().endsWith(".webm");
-                                const isCurrentPlaying = currentTrack?.src === character.demo && isPlayingGlobal;
-
-                                return (
-                                    <div
-                                        key={character.name}
-                                        className="group relative rounded-2xl overflow-hidden border border-white/10 bg-[#0f0f14] hover:border-blue-500/50 transition duration-500"
-                                    >
-                                        {isCurrentPlaying && isVideo ? (
-                                            <video
-                                                src={character.demo}
-                                                autoPlay
-                                                muted
-                                                loop
-                                                className="w-full h-72 object-cover transition duration-500"
-                                            />
-                                        ) : (
-                                            <img
-                                                src={character.image}
-                                                alt={character.name}
-                                                onError={(e) => {
-                                                    e.target.src = defaultImg;
-                                                    e.target.onerror = null; // evita bucles infinitos
-                                                }}
-                                                className={`w-full h-72 object-cover grayscale group-hover:grayscale-0 transition duration-500 ${positionMap[character.image_position] || "object-center"}`}
-                                            />
-                                        )}
-
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent opacity-90" />
-
-                                        <div className="absolute bottom-0 p-6">
-                                            <h3 className="text-white text-lg font-semibold">
-                                                {character.name}
-                                            </h3>
-                                            <p className="text-blue-400 text-sm">
-                                                {character.project}
-                                            </p>
-                                        </div>
-
-                                        {character.demo && (
-                                            <button
-                                                onClick={() =>
-                                                    setCurrentTrack({
-                                                        title: character.name,
-                                                        actor: actor.name,
-                                                        src: character.demo
-                                                    })
-                                                }
-                                                className="absolute top-4 right-4 p-2 bg-blue-600 rounded-full hover:scale-110 transition z-10"
-                                            >
-                                                {<Play size={16} />}
-                                            </button>
-                                        )}
-                                    </div>
-                                );
-                            })}
+                            {actor.profile.characters.map((character) => (
+                                <CharacterCard
+                                    key={character.name}
+                                    character={character}
+                                    actorName={actor.name}
+                                    currentTrack={currentTrack}
+                                    isPlayingGlobal={isPlayingGlobal}
+                                    currentTimeGlobal={currentTimeGlobal}
+                                    onPlayPause={handlePlayPause}
+                                    positionMap={positionMap}
+                                />
+                            ))}
 
                         </div>
                     </div>
@@ -386,9 +451,11 @@ export default function ProfilePage({ actor }) {
 
             {/* REPRODUCTOR GLOBAL */}
             <AudioPlayer
+                ref={audioPlayerRef}
                 track={currentTrack}
                 onClose={() => setCurrentTrack(null)}
                 onPlayPause={(playing) => setIsPlayingGlobal(playing)}
+                onTimeUpdate={(time) => setCurrentTimeGlobal(time)}
             />
 
         </>

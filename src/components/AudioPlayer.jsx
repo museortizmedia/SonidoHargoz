@@ -1,7 +1,7 @@
 import { Play, Pause, X } from "lucide-react";
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, useImperativeHandle, forwardRef } from "react";
 
-export default function AudioPlayer({ track, onClose, onPlayPause }) {
+const AudioPlayer = forwardRef(({ track, onClose, onPlayPause, onTimeUpdate }, ref) => {
     const audioRef = useRef(null);
     const analyserRef = useRef(null);
     const audioContextRef = useRef(null);
@@ -13,6 +13,18 @@ export default function AudioPlayer({ track, onClose, onPlayPause }) {
     const [currentTime, setCurrentTime] = useState(0);
     const [duration, setDuration] = useState(0);
     const [isDragging, setIsDragging] = useState(false);
+
+    // Notificar cambio de tiempo al padre
+    useEffect(() => {
+        if (onTimeUpdate) onTimeUpdate(currentTime);
+    }, [currentTime, onTimeUpdate]);
+
+    // Exponer la función toggle al padre a través de la ref
+    useImperativeHandle(ref, () => ({
+        toggle: () => {
+            toggle();
+        }
+    }));
 
     // Notificar cambio de estado al padre
     useEffect(() => {
@@ -256,4 +268,6 @@ export default function AudioPlayer({ track, onClose, onPlayPause }) {
             </div>
         </div>
     );
-}
+});
+
+export default AudioPlayer;

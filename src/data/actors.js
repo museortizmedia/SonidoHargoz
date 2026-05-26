@@ -12,7 +12,6 @@ import actor10 from "../assets/actores/actor10.png";
 import demo1 from "../assets/demos/demo1.mp3";
 import demo2 from "../assets/demos/demo2.mp3";
 import demo3 from "../assets/demos/demo3.mp3";
-import demo3_1 from "../assets/demos/demo3_1.mp3";
 import demo4 from "../assets/demos/demo4.mp3";
 import demo5 from "../assets/demos/demo5.mp3";
 import demo6 from "../assets/demos/demo6.mp3";
@@ -21,8 +20,12 @@ import demo8 from "../assets/demos/demo8.mp3";
 import demo9 from "../assets/demos/demo9.mp3";
 import demo10 from "../assets/demos/demo10.mp3";
 
+
+import demo3_1 from "../assets/demos/demo3_1.mp3";
 import character_image_3_2 from "../assets/actores/characters3/Frigidum.jpg";
-import character_demo_3_2 from "../assets/actores/characters3/character3_1_demo.mp4";
+import character_demo_3_2 from "../assets/actores/characters3/character3_2_demo.mp4";
+import character_demo_3_3 from "../assets/actores/characters3/character3_3_demo.mp4";
+import character_demo_3_4 from "../assets/actores/characters3/character3_4_demo.mp4";
 
 
 
@@ -36,7 +39,7 @@ export const actors = [
     // Tony
     {
         id: 3,
-        slug: "antonio-tony-arzuza",
+        slug: "tony",
         name: "Antonio 'Tony' Arzuza",
         gender: "masculino",
         featured: false,
@@ -62,6 +65,17 @@ Soy Tony. Co-creador y Co-director de Sonido Hargoz. Locutor, actor de voz y dob
                     project: "Frailejón Ernesto Pérez y el acecho de las sombras siniestras",
                     image: character_image_3_2,
                     demo: character_demo_3_2
+                },
+                {
+                    name: "90 minutos",
+                    project: "Clasificatoria al mundial 2026",
+                    demo: character_demo_3_3
+                },
+                {
+                    name: "Uao Play",
+                    project: "Promo Colonias",
+                    image: '/',
+                    demo: character_demo_3_4
                 }
             ]
         },
